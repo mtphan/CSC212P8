@@ -120,9 +120,12 @@ public class CharTrie extends AbstractSet<String> {
 		 */
 		public int countNodes() {
 			int count = 1;
-			// loop over links
-			// if they're not null
-			// count them, too
+			
+			for (Node link : links) {
+				if (link!=null) {
+					count += link.countNodes();
+				}
+			}
 			return count;
 		}
 	}
@@ -133,12 +136,14 @@ public class CharTrie extends AbstractSet<String> {
 	 * @return the number of nodes in the trie.
 	 */
 	public int countNodes() {
-		return root.countNodes();
+		// Off by one error due to assuming root node contributes to the size of this trie.
+		return root.countNodes()-1;
 	}
 
 	/**
 	 * We would need to create an object that kept the recursion state around.
 	 * We will talk about depth-first search (part of the solution to this) next week.
+	 * MP: Cool!
 	 */
 	@Override
 	public Iterator<String> iterator() {
