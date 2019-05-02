@@ -50,7 +50,7 @@ public class SortedStringListSet extends AbstractSet<String> {
 	 * @return the index found, OR negative if not found.
 	 */
 	private int binarySearch(String query, int start, int end) {
-		if (end>=start) {
+		if (end>start) {
 			// Cool bug, I did this before reading the article. Best thing I've read all week, can't believe people figured that out.
 			// I luckily escaped the bug because I was too lazy to simplify start + (end - start)/2.
 			int pivot = start + ((end-1) - start)/2;
